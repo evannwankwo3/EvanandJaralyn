@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jaralyn + Evan | 100 Dates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: #000000;
+      --bg-elevated: #0a0a0a;
+      --card: #141414;
+      --card-hover: #1a1a1a;
+      --border: #262626;
+      --border-light: #333333;
+      --fg: #ffffff;
+      --fg-muted: #737373;
+      --accent: #d4a574;
+      --accent-light: rgba(212, 165, 116, 0.15);
+      
+      --cat-creative: #a78bfa;
+      --cat-food: #fb923c;
+      --cat-active: #34d399;
+      --cat-outdoors: #4ade80;
+      --cat-cozy: #fbbf24;
+      --cat-culture: #38bdf8;
+      --cat-night-out: #fb7185;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--bg); }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+
+    /* ============================================
+       HOME PAGE STYLES (Dark Theme)
+    ============================================ */
+    
+    .home-page {
+      background: var(--bg);
+      color: var(--fg);
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    .home-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .home-blob-1 {
+      width: 400px;
+      height: 400px;
+      background: var(--cat-creative);
+      top: -100px;
+      right: -100px;
+      animation: blobFloat 25s ease-in-out infinite;
+    }
+
+    .home-blob-2 {
+      width: 350px;
+      height: 350px;
+      background: var(--cat-food);
+      bottom: 10%;
+      left: -120px;
+      animation: blobFloat 30s ease-in-out infinite reverse;
+    }
+
+    .home-blob-3 {
+      width: 300px;
+      height: 300px;
+      background: var(--cat-active);
+      top: 50%;
+      right: -80px;
+      animation: blobFloat 22s ease-in-out infinite;
+    }
+
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -40px) scale(1.05); }
+      66% { transform: translate(-20px, 30px) scale(0.95); }
+    }
+
+    /* Card Stack Animation */
+    .card-stack {
+      position: relative;
+      width: 220px;
+      height: 280px;
+      margin: 0 auto;
+    }
+
+    .stack-card {
+      position: absolute;
+      width: 200px;
+      height: 260px;
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+    }
+
+    .stack-card-1 {
+      left: 10px;
+      top: 10px;
+      transform: rotate(-8deg);
+      animation: cardFloat1 6s ease-in-out infinite;
+      border-left: 3px solid var(--cat-creative);
+    }
+
+    .stack-card-2 {
+      left: 10px;
+      top: 10px;
+      transform: rotate(-3deg);
+      animation: cardFloat2 6s ease-in-out infinite;
+      animation-delay: -1s;
+      border-left: 3px solid var(--cat-food);
+    }
+
+    .stack-card-3 {
+      left: 10px;
+      top: 10px;
+      transform: rotate(2deg);
+      animation: cardFloat3 6s ease-in-out infinite;
+      animation-delay: -2s;
+      border-left: 3px solid var(--cat-active);
+    }
+
+    .stack-card-4 {
+      left: 10px;
+      top: 10px;
+      transform: rotate(0deg);
+      animation: cardFloat4 6s ease-in-out infinite;
+      animation-delay: -3s;
+      border-left: 3px solid var(--cat-cozy);
+    }
+
+    @keyframes cardFloat1 {
+      0%, 100% { transform: rotate(-8deg) translateY(0) translateX(0); }
+      50% { transform: rotate(-8deg) translateY(-10px) translateX(4px); }
+    }
+
+    @keyframes cardFloat2 {
+      0%, 100% { transform: rotate(-3deg) translateY(0) translateX(0); }
+      50% { transform: rotate(-3deg) translateY(-8px) translateX(-4px); }
+    }
+
+    @keyframes cardFloat3 {
+      0%, 100% { transform: rotate(2deg) translateY(0) translateX(0); }
+      50% { transform: rotate(2deg) translateY(-12px) translateX(3px); }
+    }
+
+    @keyframes cardFloat4 {
+      0%, 100% { transform: rotate(0deg) translateY(0) translateX(0); }
+      50% { transform: rotate(0deg) translateY(-6px) translateX(-3px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .home-blob, .stack-card { animation: none; }
+    }
+
+    .home-progress-ring {
+      transform: rotate(-90deg);
+    }
+
+    .home-progress-ring-bg {
+      fill: none;
+      stroke: var(--border);
+      stroke-width: 6;
+    }
+
+    .home-progress-ring-fill {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 6;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 0.5s ease;
+    }
+
+    .home-btn-primary {
+      background: var(--fg);
+      color: var(--bg);
+      padding: 18px 40px;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 24px rgba(255, 255, 255, 0.1);
+    }
+
+    .home-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(255, 255, 255, 0.15);
+    }
+
+    .home-btn-ghost {
+      background: transparent;
+      color: var(--fg-muted);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .home-btn-ghost:hover {
+      background: var(--card-hover);
+      color: var(--fg);
+    }
+
+    .step-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+
+    .step-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--fg-muted);
+    }
+
+    /* ============================================
+       DECK PAGE STYLES
+    ============================================ */
+
+    .date-card { border-left: 4px solid var(--border-light); }
+    
+    .date-card[data-category="creative"] { border-left-color: var(--cat-creative); }
+    .date-card[data-category="food"] { border-left-color: var(--cat-food); }
+    .date-card[data-category="active"] { border-left-color: var(--cat-active); }
+    .date-card[data-category="outdoors"] { border-left-color: var(--cat-outdoors); }
+    .date-card[data-category="cozy"] { border-left-color: var(--cat-cozy); }
+    .date-card[data-category="culture"] { border-left-color: var(--cat-culture); }
+    .date-card[data-category="night out"] { border-left-color: var(--cat-night-out); }
+
+    .date-card {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      min-height: 360px;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+
+    .card-inner.flipped { transform: rotateY(180deg); }
+
+    .card-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: var(--card);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card-inner { transition: opacity 0.3s ease; }
+      .card-inner.flipped { transform: none; }
+      .card-front { opacity: 1; transition: opacity 0.3s ease; }
+      .card-inner.flipped .card-front { opacity: 0; pointer-events: none; }
+      .card-back { transform: none; opacity: 0; transition: opacity 0.3s ease; }
+      .card-inner.flipped .card-back { opacity: 1; }
+    }
+
+    .tag-pill {
+      background: rgba(255, 255, 255, 0.05);
+      color: #a3a3a3;
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+    .date-card[data-category="creative"] .tag-pill { color: var(--cat-creative); border-color: rgba(167, 139, 250, 0.3); background: rgba(167, 139, 250, 0.1); }
+    .date-card[data-category="food"] .tag-pill { color: var(--cat-food); border-color: rgba(251, 146, 60, 0.3); background: rgba(251, 146, 60, 0.1); }
+    .date-card[data-category="active"] .tag-pill { color: var(--cat-active); border-color: rgba(52, 211, 153, 0.3); background: rgba(52, 211, 153, 0.1); }
+    .date-card[data-category="outdoors"] .tag-pill { color: var(--cat-outdoors); border-color: rgba(74, 222, 128, 0.3); background: rgba(74, 222, 128, 0.1); }
+    .date-card[data-category="cozy"] .tag-pill { color: var(--cat-cozy); border-color: rgba(251, 191, 36, 0.3); background: rgba(251, 191, 36, 0.1); }
+    .date-card[data-category="culture"] .tag-pill { color: var(--cat-culture); border-color: rgba(56, 189, 248, 0.3); background: rgba(56, 189, 248, 0.1); }
+    .date-card[data-category="night out"] .tag-pill { color: var(--cat-night-out); border-color: rgba(251, 113, 133, 0.3); background: rgba(251, 113, 133, 0.1); }
+
+    .category-pill {
+      background: var(--border);
+      color: var(--fg);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .date-card[data-category="creative"] .category-pill { background: var(--cat-creative); color: #000; }
+    .date-card[data-category="food"] .category-pill { background: var(--cat-food); color: #000; }
+    .date-card[data-category="active"] .category-pill { background: var(--cat-active); color: #000; }
+    .date-card[data-category="outdoors"] .category-pill { background: var(--cat-outdoors); color: #000; }
+    .date-card[data-category="cozy"] .category-pill { background: var(--cat-cozy); color: #000; }
+    .date-card[data-category="culture"] .category-pill { background: var(--cat-culture); color: #000; }
+    .date-card[data-category="night out"] .category-pill { background: var(--cat-night-out); color: #000; }
+
+    /* ============================================
+       MODAL STYLES
+    ============================================ */
+
+    .modal-content { border-left: 4px solid var(--border-light); }
+    .modal-content[data-category="creative"] { border-left-color: var(--cat-creative); }
+    .modal-content[data-category="food"] { border-left-color: var(--cat-food); }
+    .modal-content[data-category="active"] { border-left-color: var(--cat-active); }
+    .modal-content[data-category="outdoors"] { border-left-color: var(--cat-outdoors); }
+    .modal-content[data-category="cozy"] { border-left-color: var(--cat-cozy); }
+    .modal-content[data-category="culture"] { border-left-color: var(--cat-culture); }
+    .modal-content[data-category="night out"] { border-left-color: var(--cat-night-out); }
+
+    .modal-content[data-category="creative"] .tag-pill { color: var(--cat-creative); border-color: rgba(167, 139, 250, 0.3); background: rgba(167, 139, 250, 0.1); }
+    .modal-content[data-category="food"] .tag-pill { color: var(--cat-food); border-color: rgba(251, 146, 60, 0.3); background: rgba(251, 146, 60, 0.1); }
+    .modal-content[data-category="active"] .tag-pill { color: var(--cat-active); border-color: rgba(52, 211, 153, 0.3); background: rgba(52, 211, 153, 0.1); }
+    .modal-content[data-category="outdoors"] .tag-pill { color: var(--cat-outdoors); border-color: rgba(74, 222, 128, 0.3); background: rgba(74, 222, 128, 0.1); }
+    .modal-content[data-category="cozy"] .tag-pill { color: var(--cat-cozy); border-color: rgba(251, 191, 36, 0.3); background: rgba(251, 191, 36, 0.1); }
+    .modal-content[data-category="culture"] .tag-pill { color: var(--cat-culture); border-color: rgba(56, 189, 248, 0.3); background: rgba(56, 189, 248, 0.1); }
+    .modal-content[data-category="night out"] .tag-pill { color: var(--cat-night-out); border-color: rgba(251, 113, 133, 0.3); background: rgba(251, 113, 133, 0.1); }
+
+    .modal-content[data-category="creative"] .category-pill { background: var(--cat-creative); color: #000; }
+    .modal-content[data-category="food"] .category-pill { background: var(--cat-food); color: #000; }
+    .modal-content[data-category="active"] .category-pill { background: var(--cat-active); color: #000; }
+    .modal-content[data-category="outdoors"] .category-pill { background: var(--cat-outdoors); color: #000; }
+    .modal-content[data-category="cozy"] .category-pill { background: var(--cat-cozy); color: #000; }
+    .modal-content[data-category="culture"] .category-pill { background: var(--cat-culture); color: #000; }
+    .modal-content[data-category="night out"] .category-pill { background: var(--cat-night-out); color: #000; }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      border-radius: 20px;
+      max-width: 480px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      transform: scale(0.95) translateY(10px);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Onboarding Modal */
+    .onboarding-modal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      max-width: 380px;
+      width: 100%;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ============================================
+       BUTTON & NAV STYLES
+    ============================================ */
+
+    .btn {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      outline: none;
+    }
+
+    .btn:focus-visible {
+      box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--fg);
+    }
+
+    .btn-primary {
+      background: var(--fg);
+      color: var(--bg);
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+    }
+
+    .btn-primary:hover {
+      background: #e5e5e5;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary {
+      background: var(--card-hover);
+      color: var(--fg);
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover { background: var(--border); border-color: var(--border-light); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--fg-muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .btn-ghost:hover {
+      color: var(--fg);
+      background: var(--card-hover);
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 8px 16px;
+      padding-bottom: max(8px, env(safe-area-inset-bottom));
+      display: flex;
+      justify-content: space-around;
+      z-index: 50;
+    }
+
+    .bottom-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      color: var(--fg-muted);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: transparent;
+      border: none;
+    }
+
+    .bottom-nav-item:hover {
+      color: var(--fg);
+    }
+
+    .bottom-nav-item.active {
+      color: var(--fg);
+      background: var(--card);
+    }
+
+    .bottom-nav-item svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* Slider */
+    .card-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 3px;
+      background: var(--border);
+      border-radius: 100px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .card-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      background: var(--fg);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .card-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    .card-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      background: var(--fg);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+    }
+
+    .card-slider.completed-card::-webkit-slider-thumb {
+      background: var(--fg-muted);
+    }
+
+    .reveal-btn {
+      background: #ffffff;
+      color: #000000;
+      padding: 18px 48px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    }
+
+    .reveal-btn:hover {
+      transform: scale(1.02);
+      background: #f5f5f5;
+    }
+
+    .form-input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: var(--fg);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      width: 100%;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--fg-muted);
+    }
+
+    .form-input::placeholder { color: var(--fg-muted); }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .page.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .page { animation: none; }
+      .modal-overlay, .modal-content { transition: none; }
+    }
+
+    .history-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .history-item:hover {
+      background: var(--card-hover);
+      border-color: var(--border-light);
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--fg-muted); }
+  </style>
+</head>
+<body>
+  <!-- ============================================
+       HOME PAGE
+  ============================================ -->
+  <section id="home-page" class="page home-page active" role="tabpanel">
+    <div class="relative min-h-screen overflow-hidden">
+      <!-- Background Blobs -->
+      <div class="home-blob home-blob-1" aria-hidden="true"></div>
+      <div class="home-blob home-blob-2" aria-hidden="true"></div>
+      <div class="home-blob home-blob-3" aria-hidden="true"></div>
+
+      <div class="relative z-10 px-6 pt-12 pb-32 max-w-lg mx-auto">
+        <!-- Hero Header -->
+        <header class="text-center mb-10">
+          <h1 class="font-display text-4xl sm:text-5xl font-semibold tracking-tight mb-2">Jaralyn + Evan</h1>
+          <p class="text-lg tracking-wide" style="color: var(--accent);">100 Dates</p>
+          <p class="text-sm mt-3" style="color: var(--fg-muted);">A date deck we're completing together.</p>
+        </header>
+
+        <!-- Animated Card Stack -->
+        <div class="mb-10">
+          <div class="card-stack">
+            <div class="stack-card stack-card-1"></div>
+            <div class="stack-card stack-card-2"></div>
+            <div class="stack-card stack-card-3"></div>
+            <div class="stack-card stack-card-4"></div>
+          </div>
+        </div>
+
+        <!-- Progress Module -->
+        <div class="rounded-2xl p-6 mb-8" style="background: var(--card); border: 1px solid var(--border);">
+          <div class="flex items-center gap-6">
+            <!-- Progress Ring -->
+            <div class="relative">
+              <svg class="home-progress-ring" width="80" height="80">
+                <circle class="home-progress-ring-bg" cx="40" cy="40" r="34"></circle>
+                <circle class="home-progress-ring-fill" id="home-progress-ring" cx="40" cy="40" r="34" stroke-dasharray="213.6" stroke-dashoffset="213.6"></circle>
+              </svg>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-2xl font-bold" id="home-completed-count">0</span>
+              </div>
+            </div>
+
+            <div class="flex-1">
+              <p class="text-sm" style="color: var(--fg-muted);">Completed</p>
+              <p class="text-lg font-semibold"><span id="home-completed-text">0</span> / 100</p>
+              <div id="home-last-date" class="mt-2 hidden">
+                <p class="text-xs" style="color: var(--fg-muted);">Last completed:</p>
+                <p class="text-sm font-medium truncate" id="home-last-date-text"></p>
+              </div>
+            </div>
+
+            <button class="home-btn-ghost text-xs" id="home-reset-btn">Reset</button>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="mb-6">
+          <button class="home-btn-primary w-full" id="home-continue-btn">Continue</button>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="flex justify-center gap-6 mb-12">
+          <button class="home-btn-ghost" id="home-history-btn">View History</button>
+          <button class="home-btn-ghost" id="home-add-btn">Add a Date</button>
+        </div>
+
+        <!-- How it Works -->
+        <div class="text-center">
+          <h3 class="text-sm font-semibold mb-6">How it works</h3>
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <path d="M12 8v8M8 12h8"/>
+                </svg>
+              </div>
+              <p class="text-xs font-medium">Reveal</p>
+              <p class="text-xs" style="color: var(--fg-muted);">a card</p>
+            </div>
+            <div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              </div>
+              <p class="text-xs font-medium">Go on</p>
+              <p class="text-xs" style="color: var(--fg-muted);">the date</p>
+            </div>
+            <div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <p class="text-xs font-medium">Mark</p>
+              <p class="text-xs" style="color: var(--fg-muted);">completed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       DECK PAGE
+  ============================================ -->
+  <section id="deck-page" class="page" role="tabpanel">
+    <div class="min-h-screen pb-24">
+      <!-- Breadcrumb Header -->
+      <header class="px-4 py-4 flex items-center justify-between border-b" style="border-color: var(--border);">
+        <button class="btn btn-ghost text-sm flex items-center gap-1" id="deck-home-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Home
+        </button>
+        <span class="text-sm font-medium" style="color: var(--fg-muted);">Deck</span>
+        <button class="btn btn-ghost text-sm" id="deck-shuffle-icon" title="Shuffle">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 3 21 3 21 8"/>
+            <line x1="4" y1="20" x2="21" y2="3"/>
+            <polyline points="21 16 21 21 16 21"/>
+            <line x1="15" y1="15" x2="21" y2="21"/>
+            <line x1="4" y1="4" x2="9" y2="9"/>
+          </svg>
+        </button>
+      </header>
+
+      <main class="px-4 pt-6 max-w-md mx-auto">
+        <div class="mb-6">
+          <div class="flex items-center justify-between">
+            <span class="text-sm font-medium" style="color: var(--fg-muted);">Completed: <span id="completed-count" class="font-semibold">0</span> / 100</span>
+            <button class="btn btn-ghost text-xs" id="reset-btn">Reset</button>
+          </div>
+        </div>
+
+        <!-- Card Slider Navigation -->
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-medium" style="color: var(--fg-muted);">Navigate</span>
+            <span class="text-xs font-semibold" id="slider-value">Card 001</span>
+          </div>
+          <input type="range" min="1" max="100" value="1" class="card-slider" id="card-slider" aria-label="Navigate through cards">
+          <div class="flex justify-between mt-1">
+            <span class="text-xs" style="color: var(--fg-muted);">001</span>
+            <span class="text-xs" style="color: var(--fg-muted);">100</span>
+          </div>
+        </div>
+
+        <div class="date-card mb-6" id="card-container">
+          <div class="card-inner" id="card-inner">
+            <div class="card-front flex items-center justify-center">
+              <div class="text-center">
+                <div class="font-display text-2xl font-semibold mb-6" style="color: var(--fg-muted);" id="card-number-front">Card 001</div>
+                <button class="btn reveal-btn" id="reveal-btn">Reveal</button>
+              </div>
+            </div>
+            <div class="card-back card-face">
+              <div class="flex items-center justify-between mb-4">
+                <div class="text-xs font-semibold tracking-wider uppercase" style="color: var(--fg-muted);" id="card-number">Card 001</div>
+                <div class="category-pill" id="card-category-display">Creative</div>
+              </div>
+              
+              <div class="space-y-2 text-sm mb-4" style="color: var(--fg-muted);">
+                <div><span>TIME:</span> <span id="card-time">evening</span></div>
+                <div><span>LENGTH:</span> <span id="card-length">2-3 hrs</span></div>
+                <div><span>COST:</span> <span id="card-cost">$40-$80</span></div>
+              </div>
+              
+              <div class="flex flex-wrap gap-2 mb-5" id="card-tags"></div>
+              
+              <p class="text-base leading-relaxed flex-1" id="card-description"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3" id="card-actions">
+          <button class="btn btn-secondary" id="shuffle-btn">Shuffle</button>
+          <button class="btn btn-secondary" id="next-btn">Next</button>
+          <button class="btn btn-primary hidden" id="complete-btn">Mark Completed</button>
+        </div>
+
+        <div class="text-center py-12 hidden" id="all-completed">
+          <p class="text-lg mb-4" style="color: var(--fg-muted);">All dates completed!</p>
+          <p class="text-sm" style="color: var(--fg-muted);">Reset your progress to start again.</p>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- ============================================
+       HISTORY PAGE
+  ============================================ -->
+  <section id="history-page" class="page" role="tabpanel">
+    <div class="min-h-screen pb-24">
+      <header class="px-4 py-4 border-b" style="border-color: var(--border);">
+        <span class="text-sm font-medium" style="color: var(--fg-muted);">History</span>
+      </header>
+      <main class="px-4 pt-6 max-w-md mx-auto">
+        <div id="history-list" class="space-y-3"></div>
+        <div id="history-empty" class="text-center py-16">
+          <p style="color: var(--fg-muted);">No completed dates yet.</p>
+          <p class="text-sm mt-2" style="color: var(--fg-muted);">Complete a date to see it here.</p>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- ============================================
+       ADD PAGE
+  ============================================ -->
+  <section id="add-page" class="page" role="tabpanel">
+    <div class="min-h-screen pb-24">
+      <header class="px-4 py-4 border-b" style="border-color: var(--border);">
+        <span class="text-sm font-medium" style="color: var(--fg-muted);">Add a Date</span>
+      </header>
+      <main class="px-4 pt-6 max-w-md mx-auto">
+        <form id="add-form" class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium mb-2" style="color: var(--fg-muted);">TIME</label>
+            <input type="text" class="form-input" id="input-time" placeholder="e.g. evening, daytime" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2" style="color: var(--fg-muted);">LENGTH</label>
+            <input type="text" class="form-input" id="input-length" placeholder="e.g. 2-3 hrs" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2" style="color: var(--fg-muted);">COST</label>
+            <input type="text" class="form-input" id="input-cost" placeholder="e.g. $20-$50" required>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2" style="color: var(--fg-muted);">CATEGORY</label>
+            <input type="text" class="form-input" id="input-category" placeholder="e.g. Creative, Food, Active">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2" style="color: var(--fg-muted);">TAGS</label>
+            <input type="text" class="form-input" id="input-tags" placeholder="creative, outdoors, food (comma separated)">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2" style="color: var(--fg-muted);">DESCRIPTION</label>
+            <textarea class="form-input" id="input-description" rows="4" placeholder="Describe the date..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-full">Add Card</button>
+        </form>
+      </main>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BOTTOM NAVIGATION
+  ============================================ -->
+  <nav class="bottom-nav" id="bottom-nav" role="tablist" aria-label="Main navigation">
+    <button class="bottom-nav-item active" data-page="home" role="tab" aria-selected="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      Home
+    </button>
+    <button class="bottom-nav-item" data-page="deck" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+      </svg>
+      Deck
+    </button>
+    <button class="bottom-nav-item" data-page="history" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+      History
+    </button>
+    <button class="bottom-nav-item" data-page="add" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+      Add
+    </button>
+  </nav>
+
+  <!-- ============================================
+       MODALS
+  ============================================ -->
+  
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-content p-6" id="modal-content">
+      <div class="flex items-start justify-between mb-4">
+        <div class="text-xs font-semibold tracking-wider uppercase" style="color: var(--fg-muted);" id="modal-card-number">Card 001</div>
+        <button class="btn btn-ghost text-xs" id="modal-close">Close</button>
+      </div>
+      <div class="mb-3">
+        <span class="category-pill" id="modal-category-display">Creative</span>
+      </div>
+      <div class="space-y-2 text-sm mb-4" style="color: var(--fg-muted);">
+        <div><span>TIME:</span> <span id="modal-time">evening</span></div>
+        <div><span>LENGTH:</span> <span id="modal-length">2-3 hrs</span></div>
+        <div><span>COST:</span> <span id="modal-cost">$40-$80</span></div>
+        <div><span>COMPLETED:</span> <span id="modal-date">Jan 1, 2024</span></div>
+      </div>
+      <div class="flex flex-wrap gap-2 mb-5" id="modal-tags"></div>
+      <p class="text-base leading-relaxed" id="modal-description"></p>
+    </div>
+  </div>
+
+  <!-- Onboarding Modal -->
+  <div class="modal-overlay" id="onboarding-overlay" role="dialog" aria-modal="true">
+    <div class="onboarding-modal">
+      <h2 class="font-display text-2xl font-semibold mb-3">Welcome</h2>
+      <p class="text-sm mb-6" style="color: var(--fg-muted);">We built a deck of dates. Pick one, do it, mark it.</p>
+      <button class="home-btn-primary" id="onboarding-close">Let's go</button>
+    </div>
+  </div>
+
+  <script>
+    // ============================================
+    // DATA
+    // ============================================
+    
+    const STORAGE_KEY = 'jaralyn-evan-dates';
+    const VISITED_KEY = 'jaralyn-evan-visited';
+    const DATA_VERSION = 'v3';
+    
+    const DEFAULT_CARDS = [
+      { id: "001", time: "evening", length: "2-3 hrs", cost: "$40-80", category: "Creative", tags: ["creative", "art", "playful"], description: "Go to Workshop PGH and tuft a small rug together. Afterwards eat at Forbes Tavern and present your pieces like an art exhibit. Worst rug buys dessert.", completed: false, completedAt: null },
+      { id: "002", time: "evening", length: "1-2 hrs", cost: "$20-50", category: "Food", tags: ["food", "exploring", "casual"], description: "Go to Squirrel Hill and each pick a spot the other person hasn't tried. Split one item from both places. Decide which one wins and the loser chooses the next date.", completed: false, completedAt: null },
+      { id: "003", time: "evening", length: "1-2 hrs", cost: "$15-30", category: "Active", tags: ["sports", "active", "playful"], description: "Go to a batting cage and hit a bucket of balls together. Whoever hits fewer clean hits buys ice cream after.", completed: false, completedAt: null },
+      { id: "004", time: "evening", length: "2-3 hrs", cost: "$35-70", category: "Creative", tags: ["painting", "relaxed", "art"], description: "Go to a paint and sip night together. Compare your paintings at the end and decide which one deserves wall space.", completed: false, completedAt: null },
+      { id: "005", time: "daytime or evening", length: "2-3 hrs", cost: "$40-90", category: "Creative", tags: ["pottery", "creative", "keepsake"], description: "Go to Little House Big Art and make a pottery piece together. The worse piece becomes permanent home decor.", completed: false, completedAt: null },
+      { id: "006", time: "daytime", length: "3-5 hrs", cost: "$25-45", category: "Outdoors", tags: ["animals", "walking", "outing"], description: "Go to the Pittsburgh Zoo & Aquarium and explore everything together. Each person picks their favorite animal they saw.", completed: false, completedAt: null },
+      { id: "007", time: "evening", length: "1-2 hrs", cost: "$10-30", category: "Cozy", tags: ["cooking", "home", "cozy"], description: "Go to Giant Eagle and pick ingredients for a meal neither of you has made before. Cook it together and eat without ordering backup food.", completed: false, completedAt: null },
+      { id: "008", time: "evening", length: "1-2 hrs", cost: "$15-40", category: "Creative", tags: ["candles", "diy", "cozy"], description: "Go to a candle-making studio and design scents that remind you of each other.", completed: false, completedAt: null },
+      { id: "009", time: "evening", length: "1-2 hrs", cost: "$25-60", category: "Food", tags: ["sushi", "interactive", "dinner"], description: "Go to Kura revolving sushi bar and keep grabbing plates until you both agree you're done.", completed: false, completedAt: null },
+      { id: "010", time: "evening", length: "1-2 hrs", cost: "$10-25", category: "Creative", tags: ["baking", "creative", "sweet"], description: "Buy icing and cookie dough and decorate cookies together. Deliver some to friends after.", completed: false, completedAt: null },
+      { id: "011", time: "evening", length: "1-2 hrs", cost: "$20-50", category: "Culture", tags: ["food", "exploring", "culture"], description: "Try African Eats Cuisine and order multiple dishes. Share and rate them.", completed: false, completedAt: null },
+      { id: "012", time: "night", length: "1-2 hrs", cost: "$30-70", category: "Night Out", tags: ["sushi", "drinks", "night vibe"], description: "Go to Umami at night, get drinks and sushi", completed: false, completedAt: null },
+      { id: "013", time: "evening", length: "2 hrs", cost: "$20-45", category: "Creative", tags: ["art", "hands-on", "creative"], description: "Go to a glass-blowing workshop or watch artists at the Pittsburgh Glass Center and pick one piece you'd put in your future place.", completed: false, completedAt: null },
+      { id: "014", time: "daytime or evening", length: "1.5-2.5 hrs", cost: "$15-35", category: "Active", tags: ["pickleball", "active", "casual"], description: "Play pickleball and keep real score. Afterwards, get some smoothies to cool down.", completed: false, completedAt: null },
+      { id: "015", time: "daytime or evening", length: "2-3 hrs", cost: "$25-60", category: "Active", tags: ["active", "playful", "competition"], description: "Go to Topgolf and play at least two games. Loser has to give a back massage.", completed: false, completedAt: null },
+      { id: "016", time: "evening", length: "1-2 hrs", cost: "$25-60", category: "Active", tags: ["racing", "playful", "active"], description: "Go go-karting together. Winner chooses the restaurant you eat at after.", completed: false, completedAt: null },
+      { id: "017", time: "evening", length: "2-3 hrs", cost: "$15-40", category: "Culture", tags: ["cooking", "culture", "home"], description: "Go to the store and pick ingredients to cook jollof rice together. Eat it and judge how well you did. Watch a Nollywood movie after.", completed: false, completedAt: null },
+      { id: "018", time: "evening", length: "2-3 hrs", cost: "$15-40", category: "Creative", tags: ["craft", "diy", "home"], description: "Go to Michael's and buy fabric and cotton to make pillows together. You keep whatever you make.", completed: false, completedAt: null },
+      { id: "019", time: "evening", length: "2-3 hrs", cost: "$25-60", category: "Active", tags: ["mini golf", "games", "playful"], description: "Go to Puttshack and play a round of mini golf. Afterwards eat at the restaurant inside Puttshack before leaving.", completed: false, completedAt: null },
+      { id: "020", time: "evening", length: "1-2 hrs", cost: "$5-20", category: "Food", tags: ["dessert", "surprise", "casual"], description: "Go to a dessert place and order the employee's favorite item without asking what it is. You have to eat it.", completed: false, completedAt: null },
+      { id: "021", time: "evening", length: "2-3 hrs", cost: "$15-35", category: "Creative", tags: ["pottery", "paint", "creative"], description: "Buy paintable mugs and paint them at home while music plays. You have to use the other person's favorite color palette.", completed: false, completedAt: null },
+      { id: "022", time: "daytime into night", length: "3-5 hrs", cost: "$20-40", category: "Outdoors", tags: ["plants", "outdoors", "stargazing"], description: "Go to Phipps Conservatory together. Afterwards bring a blanket to Schenley Park and lay under the sky for a while.", completed: false, completedAt: null },
+      { id: "023", time: "evening", length: "1-2 hrs", cost: "$20-50", category: "Active", tags: ["playful", "games", "competition"], description: "Go play mini bowling together. Play at least two games and keep score. Winner chooses the next date.", completed: false, completedAt: null },
+      { id: "024", time: "daytime", length: "2-3 hrs", cost: "$15-40", category: "Outdoors", tags: ["bikes", "museum", "outdoors"], description: "Walk through Bicycle Heaven and each pick the strangest bike you'd realistically ride. Then rent bikes and ride the river trail nearby before heading back.", completed: false, completedAt: null },
+      { id: "025", time: "daytime", length: "1-2 hrs", cost: "$0", category: "Creative", tags: ["sketching", "art", "outdoors"], description: "Sit somewhere scenic downtown and sketch the same view. Afterwards, find a nice spot to get a drink or food.", completed: false, completedAt: null },
+      { id: "026", time: "daytime", length: "2-4 hrs", cost: "$0-10", category: "Outdoors", tags: ["hike", "scenic", "outdoors"], description: "Hike the Emerald View Trail up to a Mount Washington overlook. Bring a snack and sit long enough to notice details you missed at first glance.", completed: false, completedAt: null },
+      { id: "027", time: "evening", length: "1-2 hrs", cost: "$15-30", category: "Food", tags: ["pizza", "casual", "comfort"], description: "Go to Driftwood Oven, share a pizza, then walk around Lawrenceville", completed: false, completedAt: null },
+      { id: "028", time: "evening", length: "2-3 hrs", cost: "$25-60", category: "Night Out", tags: ["arcade", "games", "competition"], description: "Go to Coop de Ville, eat there, then play arcade games together. Loser has to complete a dare chosen by the winner before leaving.", completed: false, completedAt: null },
+      { id: "029", time: "sunset", length: "1-2 hrs", cost: "$0-10", category: "Outdoors", tags: ["walk", "view", "calm"], description: "Walk the West End Bridge pedestrian path and stay until the skyline lights fully turn on.", completed: false, completedAt: null },
+      { id: "030", time: "evening", length: "1-2 hrs", cost: "$10-25", category: "Cozy", tags: ["dessert", "home", "sweet"], description: "Go to Giant Eagle and pick a dessert neither of you has made before. Make it together and eat it fresh, no saving leftovers for later.", completed: false, completedAt: null },
+      { id: "031", time: "night", length: "2-4 hrs", cost: "$20-40", category: "Cozy", tags: ["movie", "cozy", "night"], description: "Go to the Dependable Drive-In Theatre and watch a movie together. Bring snacks and stay in the car the whole time.", completed: false, completedAt: null },
+      { id: "032", time: "evening", length: "2-3 hrs", cost: "$15-40", category: "Culture", tags: ["cooking", "culture", "home"], description: "Go to the store and pick ingredients to make spanakopita together. Eat it and judge how well you did. Watch a movie after.", completed: false, completedAt: null },
+      { id: "033", time: "evening", length: "2-3 hrs", cost: "$15-40", category: "Culture", tags: ["cooking", "culture", "home"], description: "Go to the store and pick ingredients to make chicken kelaguen together. Eat it and judge how well you did.", completed: false, completedAt: null },
+      { id: "034", time: "evening", length: "2-3 hrs", cost: "$15-40", category: "Culture", tags: ["cooking", "culture", "home"], description: "Go to the store and pick ingredients to make another Chamorro dish of Jaralyn's choice together. Eat it and judge how well you did.", completed: false, completedAt: null },
+      { id: "035", time: "evening", length: "1-2 hrs", cost: "$20-40", category: "Active", tags: ["climbing", "active", "challenge"], description: "Go indoor rock climbing together and try at least three routes each. You're not allowed to quit before finishing one you started.", completed: false, completedAt: null },
+      { id: "036", time: "night", length: "1-3 hrs", cost: "$0", category: "Cozy", tags: ["minecraft", "gaming", "cozy"], description: "Build something together in Minecraft and give it a name before logging off", completed: false, completedAt: null },
+      { id: "037", time: "daytime", length: "2-4 hrs", cost: "$35-80", category: "Active", tags: ["paintball", "group", "competition"], description: "Invite friends to play paintball on teams. Whoever is on the losing team owes the winner a back rub later that night.", completed: false, completedAt: null },
+      { id: "038", time: "evening", length: "1-2 hrs", cost: "$20-50", category: "Night Out", tags: ["jazz", "dinner", "atmosphere"], description: "Eat at Con Alma and watch live jazz.", completed: false, completedAt: null },
+      { id: "039", time: "evening", length: "1-2 hrs", cost: "$20-50", category: "Culture", tags: ["food", "exploring", "culture"], description: "Eat at Little Athens Greek Restaurant and order multiple dishes. Share and rate them.", completed: false, completedAt: null },
+      { id: "040", time: "evening", length: "1-2 hrs", cost: "$20-50", category: "Food", tags: ["food hall", "variety", "sharing"], description: "Go to Novo Asian Food Hall and each bring back one mystery item for the other person to try first.", completed: false, completedAt: null },
+      { id: "041", time: "night", length: "1-2 hrs", cost: "$20-50", category: "Night Out", tags: ["cocktails", "unique", "conversation"], description: "Go to Space Bar and ask the bartender to surprise you both with different drinks.", completed: false, completedAt: null },
+      { id: "042", time: "evening", length: "1-2 hrs", cost: "$20-40", category: "Night Out", tags: ["views", "night", "quiet"], description: "Go to the West End Overlook at night and hang out for a bit. Afterwards get food at Big Jim's in the Run.", completed: false, completedAt: null },
+      { id: "043", time: "daytime", length: "2-3 hrs", cost: "$0-15", category: "Outdoors", tags: ["waterfall", "nature", "wandering"], description: "Walk the trails at Fall Run Park and find the waterfall.", completed: false, completedAt: null },
+      { id: "044", time: "daytime", length: "2-4 hrs", cost: "$0", category: "Outdoors", tags: ["lake", "calm", "nature"], description: "Go to North Park Lake and walk the full loop together.", completed: false, completedAt: null },
+      { id: "045", time: "evening", length: "2-3 hrs", cost: "$0-15", category: "Cozy", tags: ["movie", "cozy", "conversation"], description: "Watch a documentary about something you both actually care about. After it ends, talk about what surprised you most and what you disagreed with.", completed: false, completedAt: null },
+      { id: "046", time: "daytime or evening", length: "2-3 hrs", cost: "$10-25", category: "Cozy", tags: ["library", "reading", "food"], description: "Go to the library and pick something short for each other to read. Sit quietly for an hour, then read parts out loud. Afterwards get Las Palmas.", completed: false, completedAt: null },
+      { id: "047", time: "late night", length: "1-2 hrs", cost: "$15-35", category: "Night Out", tags: ["view", "night", "quiet"], description: "Go up to the Mount Washington overlook and walk around together. Afterwards get a late-night snack at Bigham Tavern.", completed: false, completedAt: null },
+      { id: "048", time: "night", length: "1-2 hrs", cost: "$0-10", category: "Night Out", tags: ["drive", "night", "music"], description: "Go for a night drive with no destination and one playlist. Drive until you both agree on somewhere to stop.", completed: false, completedAt: null },
+      { id: "049", time: "daytime", length: "2-3 hrs", cost: "$20-45", category: "Outdoors", tags: ["picnic", "outdoors", "food"], description: "Go to Giant Eagle together and pick ingredients for a picnic you've never had before. Take it to a park and eat outside. You both have to choose one item the other person wouldn't normally buy.", completed: false, completedAt: null },
+      { id: "050", time: "daytime", length: "2-3 hrs", cost: "$15-40", category: "Outdoors", tags: ["picnic", "outdoors", "relaxed"], description: "Make sandwiches and pack fruit and snacks for a picnic in Schenley Park.", completed: false, completedAt: null },
+      { id: "051", time: "evening", length: "1-2 hrs", cost: "$25-60", category: "Food", tags: ["burgers", "walk", "casual"], description: "Eat at Slice on Broadway then walk to the South Side riverfront trail and sit near the water.", completed: false, completedAt: null },
+      { id: "052", time: "evening", length: "1-2 hrs", cost: "$20-50", category: "Food", tags: ["asian food", "dinner", "casual"], description: "Go to Everyday Noodles in Squirrel Hill and each choose a different dish to share.", completed: false, completedAt: null },
+      { id: "053", time: "evening", length: "1-2 hrs", cost: "$20-45", category: "Culture", tags: ["culture", "food", "exploring"], description: "Eat at Kaya Island Cuisine and order some Caribbean", completed: false, completedAt: null },
+      { id: "054", time: "evening", length: "1-2 hrs", cost: "$20-45", category: "Food", tags: ["comfort food", "dinner", "casual"], description: "Go to Tessaro's and split their giant burger and a side. Sit and talk for a while after eating.", completed: false, completedAt: null },
+      { id: "055", time: "evening", length: "1-2 hrs", cost: "$40-90", category: "Night Out", tags: ["dinner", "nice", "occasion"], description: "Eat dinner at Pusadee's Garden and take your time.", completed: false, completedAt: null },
+      { id: "056", time: "evening", length: "1-2 hrs", cost: "$35-80", category: "Night Out", tags: ["dinner", "new place", "occasion"], description: "Pick a restaurant neither of you has been to and dress slightly nicer than usual.", completed: false, completedAt: null },
+      { id: "057", time: "night", length: "1-2 hrs", cost: "$20-50", category: "Night Out", tags: ["drinks", "conversation", "relaxed"], description: "Go somewhere just for drinks and sit long enough to people watch together.", completed: false, completedAt: null },
+      { id: "058", time: "evening", length: "2-3 hrs", cost: "$30-70", category: "Night Out", tags: ["dinner", "walk", "night"], description: "Eat somewhere in Lawrenceville and walk around Butler Street after.", completed: false, completedAt: null },
+      { id: "059", time: "evening", length: "1-2 hrs", cost: "$20-60", category: "Food", tags: ["appetizers", "sharing", "casual"], description: "Go to a restaurant and only order appetizers to share.", completed: false, completedAt: null },
+      { id: "060", time: "evening", length: "1-2 hrs", cost: "$20-50", category: "Food", tags: ["ramen", "comfort", "casual"], description: "Go get ramen together and each try a different bowl. Decide which one tastes better.", completed: false, completedAt: null },
+      { id: "061", time: "daytime", length: "1-2 hrs", cost: "$0-20", category: "Outdoors", tags: ["plants", "calm", "wandering"], description: "Walk through Phipps Conservatory together and just explore. Afterwards grab coffee nearby and sit for a bit before leaving.", completed: false, completedAt: null },
+      { id: "062", time: "daytime", length: "2-4 hrs", cost: "$0-15", category: "Outdoors", tags: ["nature", "walk", "quiet"], description: "Go walk the trails at Frick Park together. Sit somewhere quiet for a bit before leaving.", completed: false, completedAt: null },
+      { id: "063", time: "daytime", length: "1-2 hrs", cost: "$10-30", category: "Food", tags: ["food", "walking", "casual"], description: "Walk through the Strip District and stop at places that catch your attention. Share at least two different foods.", completed: false, completedAt: null },
+      { id: "064", time: "evening", length: "1-2 hrs", cost: "$0-20", category: "Outdoors", tags: ["outdoors", "trail", "scenic"], description: "Walk the Three Rivers Heritage Trail together and stop when you find a good sitting spot near the water. Afterwards get ice cream nearby.", completed: false, completedAt: null },
+      { id: "065", time: "evening", length: "1-2 hrs", cost: "$15-35", category: "Food", tags: ["pizza", "strip district", "walk"], description: "Go to Iron Born Pizza and split a pie together. Afterwards walk around the Strip District and stop somewhere random for a drink or dessert before heading home.", completed: false, completedAt: null },
+      { id: "066", time: "daytime", length: "1-2 hrs", cost: "$0-20", category: "Outdoors", tags: ["animals", "wholesome", "calm"], description: "Go play with puppies at an animal shelter or adoption event.", completed: false, completedAt: null },
+      { id: "067", time: "evening", length: "1-2 hrs", cost: "$10-25", category: "Cozy", tags: ["dessert", "home", "cozy"], description: "Buy toppings and make homemade ice cream together. Watch Netflix after.", completed: false, completedAt: null },
+      { id: "068", time: "evening", length: "1-2 hrs", cost: "$0-10", category: "Cozy", tags: ["questions", "conversation", "home"], description: "Each of you writes 10 questions you've never asked the other person. Swap lists and go through all of them. No skipping.", completed: false, completedAt: null },
+      { id: "069", time: "evening", length: "1-2 hrs", cost: "$10-25", category: "Night Out", tags: ["arcade", "playful", "competition"], description: "Go to an arcade and each pick three games for the other person to play. Highest ticket total wins and chooses the next date.", completed: false, completedAt: null },
+      { id: "070", time: "daytime", length: "2-3 hrs", cost: "$0-15", category: "Cozy", tags: ["learning", "library", "calm"], description: "Pick a topic neither of you knows much about and learn about it together for an hour. Afterwards explain it to each other from memory.", completed: false, completedAt: null },
+      { id: "071", time: "daytime", length: "1-2 hrs", cost: "$10-25", category: "Outdoors", tags: ["walk", "downtown", "casual"], description: "Walk around Point State Park together and sit near the fountain for a bit. Afterwards go eat at Market Square. Each of you picks a different place and share both.", completed: false, completedAt: null },
+      { id: "072", time: "morning", length: "1-2 hrs", cost: "$10-20", category: "Food", tags: ["breakfast", "casual", "local"], description: "Go to Curbside on the Run and get breakfast sandwiches. Eat them somewhere outside instead of in the car.", completed: false, completedAt: null },
+      { id: "073", time: "daytime", length: "2-3 hrs", cost: "$15-35", category: "Active", tags: ["golf", "active", "outdoors"], description: "Go to a driving range and hit a bucket of balls together.", completed: false, completedAt: null },
+      { id: "074", time: "daytime", length: "2-3 hrs", cost: "$20-50", category: "Active", tags: ["golf", "competition", "outdoors"], description: "Go play 9 holes of golf together. Keep score the whole time. Lowest score wins.", completed: false, completedAt: null },
+      { id: "075", time: "daytime", length: "2-3 hrs", cost: "$15-35", category: "Creative", tags: ["art", "outdoors", "creative"], description: "Bring spray paint to Color Park and make a piece together. Afterwards go to a nearby cafe or restaurant.", completed: false, completedAt: null },
+      { id: "076", time: "daytime", length: "2-4 hrs", cost: "$15-25", category: "Outdoors", tags: ["museum", "exploring", "calm"], description: "Go to the Carnegie Museum of Natural History and walk through the exhibits together. Each person picks one exhibit to spend extra time in.", completed: false, completedAt: null },
+      { id: "077", time: "daytime", length: "2-4 hrs", cost: "$20-30", category: "Creative", tags: ["art", "museum", "calm"], description: "Go to the Carnegie Museum of Art and wander through the galleries together. Pick one piece you'd actually hang at home.", completed: false, completedAt: null },
+      { id: "078", time: "daytime", length: "2-4 hrs", cost: "$20-30", category: "Cozy", tags: ["science", "interactive", "exploring"], description: "Go to the Carnegie Science Center and try as many interactive exhibits as you can.", completed: false, completedAt: null },
+      { id: "079", time: "evening", length: "1-2 hrs", cost: "$10-30", category: "Food", tags: ["ice cream", "casual", "food"], description: "Go out just for ice cream and walk around while you eat it.", completed: false, completedAt: null },
+      { id: "080", time: "daytime", length: "1-2 hrs", cost: "$10-30", category: "Night Out", tags: ["thrifting", "exploring", "casual"], description: "Go thrifting and pick out one outfit for each other.", completed: false, completedAt: null },
+      { id: "081", time: "night", length: "1-2 hrs", cost: "$0-15", category: "Outdoors", tags: ["stargazing", "quiet", "outdoors"], description: "Eat at a restaurant you've never had before then drive to a low-light area outside the city (North Park / overlook / trail parking area) and watch the stars.", completed: false, completedAt: null },
+      { id: "082", time: "evening", length: "1-2 hrs", cost: "$10-25", category: "Creative", tags: ["creative", "diy", "challenge"], description: "Go to an art supply store and give each other a $10 budget to secretly buy materials. You have 30 minutes to make something for the other person.", completed: false, completedAt: null },
+      { id: "083", time: "daytime or evening", length: "2 hrs", cost: "$15-35", category: "Active", tags: ["workout", "active", "health"], description: "Do a basketball or gym workout together for at least an hour. Afterwards get acai bowls.", completed: false, completedAt: null },
+      { id: "084", time: "daytime or evening", length: "1-2 hrs", cost: "$0-10", category: "Cozy", tags: ["audiobook", "cozy", "conversation"], description: "Start an audiobook you both agree on. Listen for a bit, pause, and talk about it before continuing another day.", completed: false, completedAt: null },
+      { id: "085", time: "evening", length: "45-90 min", cost: "$0", category: "Cozy", tags: ["relaxed", "home", "care"], description: "Give each other back rubs and switch halfway through. No phones allowed during the time.", completed: false, completedAt: null },
+      { id: "086", time: "evening", length: "1-2 hrs", cost: "$15-35", category: "Food", tags: ["food", "surprise", "casual"], description: "Go to a local taco spot and each order something the other person picks. No switching after it arrives.", completed: false, completedAt: null },
+      { id: "087", time: "evening", length: "1-2 hrs", cost: "$10-30", category: "Active", tags: ["mini golf", "playful", "casual"], description: "Go play mini golf together. Loser chooses the next date.", completed: false, completedAt: null },
+      { id: "088", time: "evening", length: "1-2 hrs", cost: "$15-40", category: "Food", tags: ["food", "sharing", "casual"], description: "Go to City Works in Market Square and only order shareable plates. Rank them from best to worst.", completed: false, completedAt: null },
+      { id: "089", time: "evening", length: "1-2 hrs", cost: "$40-90", category: "Night Out", tags: ["dinner", "occasion", "experience"], description: "Go to Fogo de Chao and pace yourselves. You're not allowed to fill up before trying at least four meats.", completed: false, completedAt: null },
+      { id: "090", time: "evening", length: "1-2 hrs", cost: "$0-20", category: "Night Out", tags: ["people watching", "walk", "casual"], description: "Walk around Market Square and narrate strangers' backstories for fun while sharing a sushi from no1 sushi.", completed: false, completedAt: null },
+      { id: "091", time: "evening", length: "1-2 hrs", cost: "$20-45", category: "Food", tags: ["ramen", "comfort", "casual"], description: "Go to Eiwa Japanese Ramen Bar and each order completely different ramen styles. Swap halfway through and decide whose pick tasted the best.", completed: false, completedAt: null },
+      { id: "092", time: "daytime", length: "1-2 hrs", cost: "$10-25", category: "Creative", tags: ["creative", "street art", "playful"], description: "Bring chalk or washable paint and add a small piece together in a park or public art space. Sign it with E & J", completed: false, completedAt: null },
+      { id: "093", time: "evening", length: "1-2 hrs", cost: "$25-60", category: "Food", tags: ["sushi", "interactive", "playful"], description: "Go to Kura revolving sushi restaurant and keep grabbing plates until you both agree you're done. You must each pick at least one risky plate for the other person.", completed: false, completedAt: null },
+      { id: "094", time: "evening", length: "1-2 hrs", cost: "$0-10", category: "Active", tags: ["catch", "sports", "casual"], description: "Go to a field and play catch or softball together. First drop buys drinks after.", completed: false, completedAt: null },
+      { id: "095", time: "daytime", length: "2-4 hrs", cost: "$0-15", category: "Outdoors", tags: ["hiking", "outdoors", "scenic"], description: "Pick a trail and hike until you reach a good stopping point. Take a photo together before heading back.", completed: false, completedAt: null },
+      { id: "096", time: "evening", length: "1-2 hrs", cost: "$0-15", category: "Active", tags: ["softball", "playful", "competition"], description: "Go to a field and play a mini home run derby. You each get 15 pitches. Longest hit wins. Loser buys smoothies and gives a massage.", completed: false, completedAt: null },
+      { id: "097", time: "evening", length: "1-2 hrs", cost: "$20-60", category: "Food", tags: ["appetizers", "sharing", "casual"], description: "Go to a restaurant and only order appetizers to share.", completed: false, completedAt: null },
+      { id: "098", time: "night", length: "1-2 hrs", cost: "$20-50", category: "Night Out", tags: ["drinks", "conversation", "relaxed"], description: "Go somewhere just for drinks and sit long enough to people watch together.", completed: false, completedAt: null },
+      { id: "099", time: "evening", length: "1-2 hrs", cost: "$10-30", category: "Food", tags: ["ice cream", "casual", "food"], description: "Go out just for ice cream and walk around while you eat it.", completed: false, completedAt: null },
+      { id: "100", time: "evening", length: "1-2 hrs", cost: "$0-20", category: "Night Out", tags: ["people watching", "walk", "casual"], description: "Walk around Market Square and narrate strangers' backstories for fun while sharing a sushi from no1 sushi.", completed: false, completedAt: null }
+    ];
+
+    // ============================================
+    // STATE
+    // ============================================
+    
+    let cards = [];
+    let currentCardIndex = 0;
+    let isRevealed = false;
+
+    function loadCards() {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      const storedVersion = localStorage.getItem(STORAGE_KEY + '-version');
+      
+      if (stored && storedVersion === DATA_VERSION) {
+        cards = JSON.parse(stored);
+      } else if (stored) {
+        const existingCards = JSON.parse(stored);
+        const existingIds = new Set(existingCards.map(c => c.id));
+        cards = [...existingCards];
+        
+        DEFAULT_CARDS.forEach(defaultCard => {
+          if (!existingIds.has(defaultCard.id)) {
+            cards.push(JSON.parse(JSON.stringify(defaultCard)));
+          }
+        });
+        
+        cards.forEach((card, index) => {
+          const defaultCard = DEFAULT_CARDS.find(dc => dc.id === card.id);
+          if (defaultCard) {
+            const wasCompleted = card.completed;
+            const completedAt = card.completedAt;
+            cards[index] = {
+              ...JSON.parse(JSON.stringify(defaultCard)),
+              completed: wasCompleted,
+              completedAt: completedAt
+            };
+          }
+        });
+        
+        cards.sort((a, b) => parseInt(a.id) - parseInt(b.id));
+        saveCards();
+        localStorage.setItem(STORAGE_KEY + '-version', DATA_VERSION);
+      } else {
+        cards = JSON.parse(JSON.stringify(DEFAULT_CARDS));
+        saveCards();
+        localStorage.setItem(STORAGE_KEY + '-version', DATA_VERSION);
+      }
+    }
+
+    function saveCards() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cards));
+    }
+
+    function getCompletedCount() {
+      return cards.filter(c => c.completed).length;
+    }
+
+    function getLastCompleted() {
+      const completed = cards.filter(c => c.completed).sort((a, b) => 
+        new Date(b.completedAt) - new Date(a.completedAt)
+      );
+      return completed[0] || null;
+    }
+
+    // ============================================
+    // DOM REFERENCES
+    // ============================================
+    
+    const elements = {
+      bottomNavItems: document.querySelectorAll('.bottom-nav-item'),
+      pages: document.querySelectorAll('.page'),
+      
+      // Home
+      homeProgressRing: document.getElementById('home-progress-ring'),
+      homeCompletedCount: document.getElementById('home-completed-count'),
+      homeCompletedText: document.getElementById('home-completed-text'),
+      homeLastDate: document.getElementById('home-last-date'),
+      homeLastDateText: document.getElementById('home-last-date-text'),
+      homeResetBtn: document.getElementById('home-reset-btn'),
+      homeContinueBtn: document.getElementById('home-continue-btn'),
+      homeHistoryBtn: document.getElementById('home-history-btn'),
+      homeAddBtn: document.getElementById('home-add-btn'),
+      
+      // Deck
+      deckHomeLink: document.getElementById('deck-home-link'),
+      deckShuffleIcon: document.getElementById('deck-shuffle-icon'),
+      completedCount: document.getElementById('completed-count'),
+      resetBtn: document.getElementById('reset-btn'),
+      cardSlider: document.getElementById('card-slider'),
+      sliderValue: document.getElementById('slider-value'),
+      cardContainer: document.getElementById('card-container'),
+      cardInner: document.getElementById('card-inner'),
+      cardNumberFront: document.getElementById('card-number-front'),
+      cardNumber: document.getElementById('card-number'),
+      cardCategoryDisplay: document.getElementById('card-category-display'),
+      cardTime: document.getElementById('card-time'),
+      cardLength: document.getElementById('card-length'),
+      cardCost: document.getElementById('card-cost'),
+      cardTags: document.getElementById('card-tags'),
+      cardDescription: document.getElementById('card-description'),
+      revealBtn: document.getElementById('reveal-btn'),
+      shuffleBtn: document.getElementById('shuffle-btn'),
+      nextBtn: document.getElementById('next-btn'),
+      completeBtn: document.getElementById('complete-btn'),
+      allCompleted: document.getElementById('all-completed'),
+      cardActions: document.getElementById('card-actions'),
+      
+      // History
+      historyList: document.getElementById('history-list'),
+      historyEmpty: document.getElementById('history-empty'),
+      
+      // Add
+      addForm: document.getElementById('add-form'),
+      inputTime: document.getElementById('input-time'),
+      inputLength: document.getElementById('input-length'),
+      inputCost: document.getElementById('input-cost'),
+      inputCategory: document.getElementById('input-category'),
+      inputTags: document.getElementById('input-tags'),
+      inputDescription: document.getElementById('input-description'),
+      
+      // Modals
+      modalOverlay: document.getElementById('modal-overlay'),
+      modalContent: document.getElementById('modal-content'),
+      modalClose: document.getElementById('modal-close'),
+      modalCardNumber: document.getElementById('modal-card-number'),
+      modalCategoryDisplay: document.getElementById('modal-category-display'),
+      modalTime: document.getElementById('modal-time'),
+      modalLength: document.getElementById('modal-length'),
+      modalCost: document.getElementById('modal-cost'),
+      modalDate: document.getElementById('modal-date'),
+      modalTags: document.getElementById('modal-tags'),
+      modalDescription: document.getElementById('modal-description'),
+      
+      // Onboarding
+      onboardingOverlay: document.getElementById('onboarding-overlay'),
+      onboardingClose: document.getElementById('onboarding-close')
+    };
+
+    // ============================================
+    // NAVIGATION
+    // ============================================
+    
+    function switchPage(pageName) {
+      elements.bottomNavItems.forEach(item => {
+        item.classList.toggle('active', item.dataset.page === pageName);
+        item.setAttribute('aria-selected', item.dataset.page === pageName);
+      });
+      
+      elements.pages.forEach(page => {
+        page.classList.toggle('active', page.id === `${pageName}-page`);
+      });
+      
+      if (pageName === 'history') {
+        renderHistory();
+      }
+      
+      if (pageName === 'deck') {
+        updateDeckUI();
+      }
+    }
+
+    elements.bottomNavItems.forEach(item => {
+      item.addEventListener('click', () => switchPage(item.dataset.page));
+    });
+
+    // ============================================
+    // HOME PAGE
+    // ============================================
+    
+    function updateHomeUI() {
+      const count = getCompletedCount();
+      const percentage = count / 100;
+      const circumference = 2 * Math.PI * 34;
+      const offset = circumference - (percentage * circumference);
+      
+      elements.homeProgressRing.style.strokeDashoffset = offset;
+      elements.homeCompletedCount.textContent = count;
+      elements.homeCompletedText.textContent = count;
+      
+      const lastCompleted = getLastCompleted();
+      if (lastCompleted) {
+        elements.homeLastDate.classList.remove('hidden');
+        const preview = lastCompleted.description.length > 40 
+          ? lastCompleted.description.substring(0, 40) + '...' 
+          : lastCompleted.description;
+        elements.homeLastDateText.textContent = `Card ${lastCompleted.id}: ${preview}`;
+      } else {
+        elements.homeLastDate.classList.add('hidden');
+      }
+    }
+
+    elements.homeResetBtn.addEventListener('click', () => {
+      if (!confirm('Are you sure you want to reset all progress?')) return;
+      cards.forEach(card => {
+        card.completed = false;
+        card.completedAt = null;
+      });
+      saveCards();
+      updateHomeUI();
+      updateDeckUI();
+    });
+
+    elements.homeContinueBtn.addEventListener('click', () => {
+      const uncompleted = cards.filter(c => !c.completed);
+      if (uncompleted.length === 0) {
+        switchPage('deck');
+        return;
+      }
+      let found = false;
+      for (let i = 1; i <= cards.length; i++) {
+        const idx = (currentCardIndex + i) % cards.length;
+        if (!cards[idx].completed) {
+          currentCardIndex = idx;
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        currentCardIndex = cards.findIndex(c => c.id === uncompleted[0].id);
+      }
+      switchPage('deck');
+      displayCard(cards[currentCardIndex]);
+    });
+
+    elements.homeHistoryBtn.addEventListener('click', () => switchPage('history'));
+    elements.homeAddBtn.addEventListener('click', () => switchPage('add'));
+
+    // ============================================
+    // DECK PAGE
+    // ============================================
+    
+    function updateDeckUI() {
+      const count = getCompletedCount();
+      elements.completedCount.textContent = count;
+    }
+
+    function updateSliderFill() {
+      const slider = elements.cardSlider;
+      const value = slider.value;
+      const max = slider.max;
+      const percentage = ((value - 1) / (max - 1)) * 100;
+      slider.style.background = `linear-gradient(to right, #ffffff 0%, #ffffff ${percentage}%, #262626 ${percentage}%, #262626 100%)`;
+    }
+
+    function updateSliderDisplay() {
+      const card = cards[currentCardIndex];
+      if (card) {
+        const cardNum = parseInt(card.id);
+        elements.cardSlider.value = cardNum;
+        elements.sliderValue.textContent = `Card ${card.id}`;
+        
+        if (card.completed) {
+          elements.cardSlider.classList.add('completed-card');
+        } else {
+          elements.cardSlider.classList.remove('completed-card');
+        }
+        
+        updateSliderFill();
+      }
+    }
+
+    function displayCard(card) {
+      if (!card) {
+        elements.cardContainer.classList.add('hidden');
+        elements.cardActions.classList.add('hidden');
+        elements.allCompleted.classList.remove('hidden');
+        return;
+      }
+      
+      elements.cardContainer.classList.remove('hidden');
+      elements.cardActions.classList.remove('hidden');
+      elements.allCompleted.classList.add('hidden');
+      
+      const categoryAttr = card.category ? card.category.toLowerCase() : 'default';
+      elements.cardContainer.setAttribute('data-category', categoryAttr);
+      
+      elements.cardNumberFront.textContent = `Card ${card.id}`;
+      elements.cardNumber.textContent = `Card ${card.id}`;
+      
+      if (card.category) {
+        elements.cardCategoryDisplay.textContent = card.category;
+        elements.cardCategoryDisplay.style.display = 'inline-block';
+      } else {
+        elements.cardCategoryDisplay.style.display = 'none';
+      }
+      
+      elements.cardTime.textContent = card.time;
+      elements.cardLength.textContent = card.length;
+      elements.cardCost.textContent = card.cost;
+      elements.cardDescription.textContent = card.description;
+      
+      elements.cardTags.innerHTML = card.tags.map(tag => 
+        `<span class="tag-pill">${tag}</span>`
+      ).join('');
+      
+      updateSliderDisplay();
+      
+      if (card.completed) {
+        elements.completeBtn.textContent = 'Completed';
+        elements.completeBtn.disabled = true;
+        elements.completeBtn.style.opacity = '0.5';
+      } else {
+        elements.completeBtn.textContent = 'Mark Completed';
+        elements.completeBtn.disabled = false;
+        elements.completeBtn.style.opacity = '1';
+      }
+    }
+
+    function goToCard(index) {
+      if (index < 0 || index >= cards.length) return;
+      
+      currentCardIndex = index;
+      isRevealed = false;
+      elements.cardInner.classList.remove('flipped');
+      elements.completeBtn.classList.add('hidden');
+      
+      displayCard(cards[currentCardIndex]);
+    }
+
+    function showNextCard(shuffle = false) {
+      if (cards.length === 0) {
+        displayCard(null);
+        return;
+      }
+      
+      if (shuffle) {
+        currentCardIndex = Math.floor(Math.random() * cards.length);
+      } else {
+        currentCardIndex = (currentCardIndex + 1) % cards.length;
+      }
+      
+      isRevealed = false;
+      elements.cardInner.classList.remove('flipped');
+      elements.completeBtn.classList.add('hidden');
+      
+      displayCard(cards[currentCardIndex]);
+    }
+
+    function revealCard() {
+      isRevealed = true;
+      elements.cardInner.classList.add('flipped');
+      elements.completeBtn.classList.remove('hidden');
+    }
+
+    function markCompleted() {
+      if (currentCardIndex === -1) return;
+      if (cards[currentCardIndex].completed) return;
+      
+      cards[currentCardIndex].completed = true;
+      cards[currentCardIndex].completedAt = new Date().toISOString();
+      saveCards();
+      updateDeckUI();
+      updateHomeUI();
+      
+      displayCard(cards[currentCardIndex]);
+    }
+
+    function resetProgress() {
+      if (!confirm('Are you sure you want to reset all progress?')) return;
+      
+      cards.forEach(card => {
+        card.completed = false;
+        card.completedAt = null;
+      });
+      saveCards();
+      updateDeckUI();
+      updateHomeUI();
+      currentCardIndex = 0;
+      goToCard(0);
+    }
+
+    elements.cardSlider.addEventListener('input', (e) => {
+      const cardNum = parseInt(e.target.value);
+      const index = cards.findIndex(c => parseInt(c.id) === cardNum);
+      if (index !== -1) {
+        goToCard(index);
+      }
+    });
+
+    elements.deckHomeLink.addEventListener('click', () => switchPage('home'));
+    elements.deckShuffleIcon.addEventListener('click', () => showNextCard(true));
+    elements.revealBtn.addEventListener('click', revealCard);
+    elements.shuffleBtn.addEventListener('click', () => showNextCard(true));
+    elements.nextBtn.addEventListener('click', () => showNextCard(false));
+    elements.completeBtn.addEventListener('click', markCompleted);
+    elements.resetBtn.addEventListener('click', resetProgress);
+
+    document.addEventListener('keydown', (e) => {
+      if (document.querySelector('#deck-page.active')) {
+        if (e.key === ' ' || e.key === 'Enter') {
+          if (!isRevealed) revealCard();
+        } else if (e.key === 'ArrowRight') {
+          showNextCard(false);
+        } else if (e.key === 'ArrowLeft') {
+          currentCardIndex = (currentCardIndex - 1 + cards.length) % cards.length;
+          goToCard(currentCardIndex);
+        } else if (e.key === 's') {
+          showNextCard(true);
+        }
+      }
+    });
+
+    // ============================================
+    // HISTORY PAGE
+    // ============================================
+    
+    function renderHistory() {
+      const completed = cards.filter(c => c.completed).sort((a, b) => {
+        return new Date(b.completedAt) - new Date(a.completedAt);
+      });
+      
+      if (completed.length === 0) {
+        elements.historyList.classList.add('hidden');
+        elements.historyEmpty.classList.remove('hidden');
+        return;
+      }
+      
+      elements.historyList.classList.remove('hidden');
+      elements.historyEmpty.classList.add('hidden');
+      
+      elements.historyList.innerHTML = completed.map(card => {
+        const date = new Date(card.completedAt);
+        const formattedDate = date.toLocaleDateString('en-US', { 
+          month: 'short', day: 'numeric', year: 'numeric' 
+        });
+        
+        const preview = card.description.length > 80 
+          ? card.description.substring(0, 80) + '...' 
+          : card.description;
+        
+        const categoryLabel = card.category 
+          ? `<span class="category-pill">${card.category}</span>` 
+          : '';
+        
+        return `
+          <button class="history-item w-full text-left" data-card-id="${card.id}">
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-semibold tracking-wider uppercase" style="color: var(--fg-muted);">Card ${card.id}</span>
+                ${categoryLabel}
+              </div>
+              <span class="text-xs" style="color: var(--fg-muted);">${formattedDate}</span>
+            </div>
+            <p class="text-sm" style="color: var(--fg-muted);">${preview}</p>
+          </button>
+        `;
+      }).join('');
+      
+      elements.historyList.querySelectorAll('.history-item').forEach(item => {
+        item.addEventListener('click', () => openModal(item.dataset.cardId));
+      });
+    }
+
+    function openModal(cardId) {
+      const card = cards.find(c => c.id === cardId);
+      if (!card) return;
+      
+      const categoryAttr = card.category ? card.category.toLowerCase() : 'default';
+      elements.modalContent.setAttribute('data-category', categoryAttr);
+      
+      elements.modalCardNumber.textContent = `Card ${card.id}`;
+      
+      if (card.category) {
+        elements.modalCategoryDisplay.textContent = card.category;
+        elements.modalCategoryDisplay.style.display = 'inline-block';
+      } else {
+        elements.modalCategoryDisplay.style.display = 'none';
+      }
+      
+      elements.modalTime.textContent = card.time;
+      elements.modalLength.textContent = card.length;
+      elements.modalCost.textContent = card.cost;
+      elements.modalDescription.textContent = card.description;
+      
+      const date = new Date(card.completedAt);
+      elements.modalDate.textContent = date.toLocaleDateString('en-US', { 
+        month: 'long', day: 'numeric', year: 'numeric' 
+      });
+      
+      elements.modalTags.innerHTML = card.tags.map(tag => 
+        `<span class="tag-pill">${tag}</span>`
+      ).join('');
+      
+      elements.modalOverlay.classList.add('active');
+      elements.modalClose.focus();
+    }
+
+    function closeModal() {
+      elements.modalOverlay.classList.remove('active');
+    }
+
+    elements.modalClose.addEventListener('click', closeModal);
+    elements.modalOverlay.addEventListener('click', (e) => {
+      if (e.target === elements.modalOverlay) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && elements.modalOverlay.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // ============================================
+    // ADD PAGE
+    // ============================================
+    
+    elements.addForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const maxId = cards.reduce((max, c) => {
+        const num = parseInt(c.id, 10);
+        return num > max ? num : max;
+      }, 0);
+      const newId = String(maxId + 1).padStart(3, '0');
+      
+      const tagsInput = elements.inputTags.value.trim();
+      const tags = tagsInput 
+        ? tagsInput.split(',').map(t => t.trim()).filter(t => t) 
+        : [];
+      
+      const newCard = {
+        id: newId,
+        time: elements.inputTime.value.trim(),
+        length: elements.inputLength.value.trim(),
+        cost: elements.inputCost.value.trim(),
+        category: elements.inputCategory.value.trim() || null,
+        tags: tags,
+        description: elements.inputDescription.value.trim(),
+        completed: false,
+        completedAt: null
+      };
+      
+      cards.push(newCard);
+      saveCards();
+      updateDeckUI();
+      updateHomeUI();
+      
+      elements.cardSlider.max = cards.length;
+      
+      elements.addForm.reset();
+      switchPage('deck');
+      
+      const newIndex = cards.findIndex(c => c.id === newId);
+      if (newIndex !== -1) {
+        goToCard(newIndex);
+      }
+    });
+
+    // ============================================
+    // ONBOARDING
+    // ============================================
+    
+    function checkOnboarding() {
+      const hasVisited = localStorage.getItem(VISITED_KEY);
+      if (!hasVisited) {
+        elements.onboardingOverlay.classList.add('active');
+      }
+    }
+
+    elements.onboardingClose.addEventListener('click', () => {
+      localStorage.setItem(VISITED_KEY, 'true');
+      elements.onboardingOverlay.classList.remove('active');
+    });
+
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+    
+    function init() {
+      loadCards();
+      
+      elements.cardSlider.max = cards.length;
+      
+      const firstCardIndex = cards.findIndex(c => c.id === '001');
+      if (firstCardIndex !== -1) {
+        currentCardIndex = firstCardIndex;
+      }
+      
+      updateHomeUI();
+      displayCard(cards[currentCardIndex]);
+      
+      checkOnboarding();
+    }
+
+    init();
+  </script>
+</body>
+</html>
